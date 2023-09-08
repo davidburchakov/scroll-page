@@ -1,4 +1,4 @@
-const intro = document.querySelector(".intro");
+const intro = document.querySelector(".video-container");
 const video = intro.querySelector("video");
 const text = intro.querySelector("h1");
 // END SECTION
@@ -20,21 +20,22 @@ ScrollTrigger.create({
 });
 
 // Video Animation
-let accelamount = 0.1;
+let accelamount = 0.2;
 let scrollpos = 0;
 let delay = 0;
 
 gsap.to(intro, {
   scrollTrigger: {
     trigger: intro,
-    start: "1px 1px",
-    end: "bottom+=1000px top",
+    start: "top top",
+    end: "bottom+=10000px top",
     markers: true,
     pin: true,
-    scrub: 1,
+    scrub: .5,
     onUpdate: (self) => {
-      scrollpos = self.progress*10;
+      scrollpos = self.progress*13;
     },
+    toggleActions: "play reverse play reverse",
   },
   onUpdate: () => {
     delay += (scrollpos - delay) * accelamount;
